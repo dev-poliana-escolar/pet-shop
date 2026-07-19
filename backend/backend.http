@@ -1,0 +1,83 @@
+@backend = http://localhost:5019
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJwb2xpYW5hQGVtYWlsLmNvbSIsInVuaXF1ZV9uYW1lIjoiUG9saWFuYSIsImV4cCI6MTc4NDUwMTUyNywiaXNzIjoiUGV0U2hvcEFQSSIsImF1ZCI6IlBldFNob3BGcm9udGVuZCJ9.TkZPgBGmzILTyRKT4CQuykXsvF_RI52f55X5RtTAO8k
+
+###
+
+POST {{backend}}/api/Auth/register
+Content-Type: application/json
+
+{
+  "nome": "Poliana",
+  "email": "poliana@email.com",
+  "senha": "123456"
+}
+
+### 
+
+POST {{backend}}/api/Auth/login
+Content-Type: application/json
+
+{
+  "email": "poliana@email.com",
+  "senha": "123456"
+}
+
+###
+
+POST {{backend}}/api/Animal
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nome": "Thor",
+  "idade": 3,
+  "peso": 12.5,
+  "dataNascimento": "2023-05-10",
+  "especie": "Cachorro",
+  "nomeTutor": "Maria",
+  "cpf": "11111111",
+  "cep": "59000000",
+  "logradouro": "Rua X",
+  "numero": 100,
+  "bairro": "Centro",
+  "cidade": "Natal",
+  "uf": "RN"
+}
+
+###
+
+GET {{backend}}/api/Animal
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{backend}}/api/Animal/4
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "id": 4,
+  "nome": "Thor Atualizado",
+  "idade": 4,
+  "peso": 14.8,
+  "dataNascimento": "2022-05-10",
+  "especie": "Cachorro",
+  "nomeTutor": "Maria Silva",
+  "cpf": "11111111",
+  "cep": "59000000",
+  "logradouro": "Rua Nova",
+  "numero": 150,
+  "bairro": "Centro",
+  "cidade": "Natal",
+  "uf": "RN"
+}
+
+###
+
+DELETE {{backend}}/api/Animal/5
+Authorization: Bearer {{token}}
+
+###
+
+GET {{backend}}/api/Animal/5
+Authorization: Bearer {{token}}
