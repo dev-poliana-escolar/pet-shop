@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AnimalService } from '../services/animal.service';
+import { ViaCepService } from '../services/viacep.service';
 
 @Component({
   selector: 'app-animais',
@@ -15,6 +16,8 @@ export class Animais implements OnInit {
   animais: any[] = [];
 
   mostrarFormulario = false;
+
+  buscandoCep = false;
 
   // dados do animal
   nome = '';
@@ -35,7 +38,10 @@ export class Animais implements OnInit {
   cidade = '';
   uf = '';
 
-  constructor(private animalService: AnimalService) {}
+  constructor(
+    private animalService: AnimalService,
+    private viaCepService: ViaCepService
+  ) {}
 
   ngOnInit(): void {
     this.carregarAnimais();
@@ -50,6 +56,41 @@ export class Animais implements OnInit {
         console.error(erro);
       }
     });
+  }
+
+  buscarCep() {
+
+    const cepLimpo = this.cep.replace(/\D/g, '');
+
+    if (cepLimpo.length !== 8) {
+      return; // CEP incompleto, não busca ainda
+    }
+
+    this.buscandoCep = true;
+
+    this.viaCepService.buscarCep(cepLimpo).subscribe({
+      next: (dados) => {
+
+        this.buscandoCep = false;
+
+        if (dados.erro) {
+          alert("CEP não encontrado.");
+          return;
+        }
+
+        this.logradouro = dados.logradouro;
+        this.bairro = dados.bairro;
+        this.cidade = dados.localidade;
+        this.uf = dados.uf;
+
+      },
+      error: (erro) => {
+        this.buscandoCep = false;
+        console.error(erro);
+        alert("Erro ao buscar o CEP.");
+      }
+    });
+
   }
 
   abrirFormulario() {

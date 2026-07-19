@@ -40,32 +40,40 @@
 
   <h3>Endereço</h3>
 
-  <p>CEP:
-    <input [(ngModel)]="cep" name="cep" placeholder="CEP">
-  </p>
+  <h3>Endereço</h3>
 
-  <p>Logradouro:
+    <p>CEP:
+    <input
+        [(ngModel)]="cep"
+        name="cep"
+        placeholder="CEP"
+        maxlength="9"
+        (blur)="buscarCep()">
+    <span *ngIf="buscandoCep">Buscando...</span>
+    </p>
+
+    <p>Logradouro:
     <input [(ngModel)]="logradouro" name="logradouro" placeholder="Rua">
-  </p>
+    </p>
 
-  <p>Número:
+    <p>Número:
     <input [(ngModel)]="numero" name="numero" type="number" placeholder="Número">
-  </p>
+    </p>
 
-  <p>Bairro:
+    <p>Bairro:
     <input [(ngModel)]="bairro" name="bairro" placeholder="Bairro">
-  </p>
+    </p>
 
-  <p>Cidade:
+    <p>Cidade:
     <input [(ngModel)]="cidade" name="cidade" placeholder="Cidade">
-  </p>
+    </p>
 
-  <p>UF:
+    <p>UF:
     <input [(ngModel)]="uf" name="uf" placeholder="UF">
-  </p>
+    </p>
 
-  <button type="submit">Cadastrar</button>
-  <button type="button" (click)="fecharFormulario()">Cancelar</button>
+    <button type="submit">Cadastrar</button>
+    <button type="button" (click)="fecharFormulario()">Cancelar</button>
 
 </form>
 
