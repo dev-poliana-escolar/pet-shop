@@ -9,6 +9,7 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: "PetShop123@"
+      MSSQL_MEMORY_LIMIT_MB: 1024
 
     ports:
       - "1433:1433"
