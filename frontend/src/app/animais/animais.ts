@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AnimalService } from '../services/animal.service';
 import { ViaCepService } from '../services/viacep.service';
@@ -40,7 +41,8 @@ export class Animais implements OnInit {
 
   constructor(
     private animalService: AnimalService,
-    private viaCepService: ViaCepService
+    private viaCepService: ViaCepService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -134,6 +136,52 @@ export class Animais implements OnInit {
     });
 
   }
+
+  editarAnimal(id: number) {
+
+  this.router.navigate([
+    '/editar-animal',
+    id
+  ]);
+
+}
+
+
+excluirAnimal(id: number) {
+
+  const confirmar = confirm(
+    "Deseja realmente excluir este animal?"
+  );
+
+
+  if (!confirmar) {
+    return;
+  }
+
+
+  this.animalService.excluirAnimal(id)
+    .subscribe({
+
+      next: () => {
+
+        alert("Animal excluído com sucesso!");
+
+        this.carregarAnimais();
+
+      },
+
+
+      error: (erro) => {
+
+        console.error(erro);
+
+        alert("Erro ao excluir animal.");
+
+      }
+
+    });
+
+}
 
   private limparFormulario() {
     this.nome = '';

@@ -94,6 +94,7 @@
       <th>Bairro</th>
       <th>Cidade</th>
       <th>UF</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -110,6 +111,15 @@
       <td>{{ animal.bairro }}</td>
       <td>{{ animal.cidade }}</td>
       <td>{{ animal.uf }}</td>
+      <td>
+        <button (click)="editarAnimal(animal.id)">
+          Editar
+        </button>
+
+        <button (click)="excluirAnimal(animal.id)">
+          Excluir
+        </button>
+    </td>
     </tr>
   </tbody>
 </table>

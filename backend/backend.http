@@ -1,5 +1,5 @@
 @backend = http://localhost:5019
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJwb2xpYW5hQGVtYWlsLmNvbSIsInVuaXF1ZV9uYW1lIjoiUG9saWFuYSIsImV4cCI6MTc4NDQ4MDE2NCwiaXNzIjoiUGV0U2hvcEFQSSIsImF1ZCI6IlBldFNob3BGcm9udGVuZCJ9.0sS1J64zfDeLKuUlUOdvw2A_M1BfGV-_05AmHqcu1jQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJwb2xpYW5hQGVtYWlsLmNvbSIsInVuaXF1ZV9uYW1lIjoiUG9saWFuYSIsImV4cCI6MTc4NDUwMTUyNywiaXNzIjoiUGV0U2hvcEFQSSIsImF1ZCI6IlBldFNob3BGcm9udGVuZCJ9.TkZPgBGmzILTyRKT4CQuykXsvF_RI52f55X5RtTAO8k
 
 ###
 
@@ -47,4 +47,37 @@ Content-Type: application/json
 ###
 
 GET {{backend}}/api/Animal
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{backend}}/api/Animal/4
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "id": 4,
+  "nome": "Thor Atualizado",
+  "idade": 4,
+  "peso": 14.8,
+  "dataNascimento": "2022-05-10",
+  "especie": "Cachorro",
+  "nomeTutor": "Maria Silva",
+  "cpf": "11111111",
+  "cep": "59000000",
+  "logradouro": "Rua Nova",
+  "numero": 150,
+  "bairro": "Centro",
+  "cidade": "Natal",
+  "uf": "RN"
+}
+
+###
+
+DELETE {{backend}}/api/Animal/5
+Authorization: Bearer {{token}}
+
+###
+
+GET {{backend}}/api/Animal/5
 Authorization: Bearer {{token}}
