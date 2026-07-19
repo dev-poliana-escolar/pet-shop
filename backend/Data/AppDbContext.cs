@@ -17,4 +17,6 @@ public class AppDbContext : DbContext
             .Property(a => a.Peso)
             .HasPrecision(5, 2);
     }
+
+    public DbSet<Usuario> Usuarios { get; set; }
 }
