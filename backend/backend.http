@@ -1,4 +1,5 @@
 @backend = http://localhost:5019
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJwb2xpYW5hQGVtYWlsLmNvbSIsInVuaXF1ZV9uYW1lIjoiUG9saWFuYSIsImV4cCI6MTc4NDQ4MDE2NCwiaXNzIjoiUGV0U2hvcEFQSSIsImF1ZCI6IlBldFNob3BGcm9udGVuZCJ9.0sS1J64zfDeLKuUlUOdvw2A_M1BfGV-_05AmHqcu1jQ
 
 ###
 
@@ -20,3 +21,30 @@ Content-Type: application/json
   "email": "poliana@email.com",
   "senha": "123456"
 }
+
+###
+
+POST {{backend}}/api/Animal
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nome": "Thor",
+  "idade": 3,
+  "peso": 12.5,
+  "dataNascimento": "2023-05-10",
+  "especie": "Cachorro",
+  "nomeTutor": "Maria",
+  "cpf": "11111111",
+  "cep": "59000000",
+  "logradouro": "Rua X",
+  "numero": 100,
+  "bairro": "Centro",
+  "cidade": "Natal",
+  "uf": "RN"
+}
+
+###
+
+GET {{backend}}/api/Animal
+Authorization: Bearer {{token}}
