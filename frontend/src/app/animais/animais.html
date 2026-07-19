@@ -1,0 +1,107 @@
+<h1>Cadastrar Animal</h1>
+
+<button (click)="abrirFormulario()">
+  Adicionar novo animal
+</button>
+
+<form *ngIf="mostrarFormulario" (ngSubmit)="cadastrarAnimal()">
+
+  <h3>Animal</h3>
+
+  <p>Nome:
+    <input [(ngModel)]="nome" name="nome" placeholder="Nome">
+  </p>
+
+  <p>Idade:
+    <input [(ngModel)]="idade" name="idade" type="number" placeholder="Idade">
+  </p>
+
+  <p>Peso:
+    <input [(ngModel)]="peso" name="peso" type="number" placeholder="Peso">
+  </p>
+
+  <p>Data de Nascimento:
+    <input [(ngModel)]="dataNascimento" name="dataNascimento" type="date">
+  </p>
+
+  <p>Espécie:
+    <input [(ngModel)]="especie" name="especie" placeholder="Espécie">
+  </p>
+
+  <h3>Tutor</h3>
+
+  <p>Nome do tutor:
+    <input [(ngModel)]="nomeTutor" name="nomeTutor" placeholder="Nome do tutor">
+  </p>
+
+  <p>CPF:
+    <input [(ngModel)]="cpf" name="cpf" placeholder="CPF">
+  </p>
+
+  <h3>Endereço</h3>
+
+  <p>CEP:
+    <input [(ngModel)]="cep" name="cep" placeholder="CEP">
+  </p>
+
+  <p>Logradouro:
+    <input [(ngModel)]="logradouro" name="logradouro" placeholder="Rua">
+  </p>
+
+  <p>Número:
+    <input [(ngModel)]="numero" name="numero" type="number" placeholder="Número">
+  </p>
+
+  <p>Bairro:
+    <input [(ngModel)]="bairro" name="bairro" placeholder="Bairro">
+  </p>
+
+  <p>Cidade:
+    <input [(ngModel)]="cidade" name="cidade" placeholder="Cidade">
+  </p>
+
+  <p>UF:
+    <input [(ngModel)]="uf" name="uf" placeholder="UF">
+  </p>
+
+  <button type="submit">Cadastrar</button>
+  <button type="button" (click)="fecharFormulario()">Cancelar</button>
+
+</form>
+
+<h1>Animais cadastrados</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Peso</th>
+      <th>Nascimento</th>
+      <th>Espécie</th>
+      <th>Tutor</th>
+      <th>CEP</th>
+      <th>Logradouro</th>
+      <th>Número</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
+      <th>UF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let animal of animais">
+      <td>{{ animal.nome }}</td>
+      <td>{{ animal.idade }}</td>
+      <td>{{ animal.peso }}</td>
+      <td>{{ animal.dataNascimento | date:'dd/MM/yyyy' }}</td>
+      <td>{{ animal.especie }}</td>
+      <td>{{ animal.nomeTutor }}</td>
+      <td>{{ animal.cep }}</td>
+      <td>{{ animal.logradouro }}</td>
+      <td>{{ animal.numero }}</td>
+      <td>{{ animal.bairro }}</td>
+      <td>{{ animal.cidade }}</td>
+      <td>{{ animal.uf }}</td>
+    </tr>
+  </tbody>
+</table>
